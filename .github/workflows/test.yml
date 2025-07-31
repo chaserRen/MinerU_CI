@@ -1,0 +1,28 @@
+name: Omni_eval
+
+on:
+  pull_request:
+    branches:
+      -name master
+
+jobs:
+  benchmark-evaluation:
+    name: Run Benchmark on Physical Machine
+    runs-on: [self-hosted, ubuntu-rzf]
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.1O
+      
+      - name: Debug workspace path
+        run: |
+          echo "PR code is at: $GITHUB_WORKSPACE"
+          ls -l $GITHUB_WORKSPACE
+      
+      - name: Run Inference and Evaluation
+        run: echo "Workspace path is $GITHUB_WORKSPACE"

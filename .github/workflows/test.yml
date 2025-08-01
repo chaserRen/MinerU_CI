@@ -1,9 +1,9 @@
 name: Omni_eval
 
 on:
-  pull_request:
-    branches:
-      -name master
+  push
+    # branches:
+    #   -name master
 
 jobs:
   benchmark-evaluation:

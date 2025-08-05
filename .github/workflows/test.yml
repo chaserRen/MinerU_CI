@@ -1,7 +1,7 @@
 name: Omni_eval
 
 on:
-  pull_request:
+  push
     # branches:
     #   -name master
 

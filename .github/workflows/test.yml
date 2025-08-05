@@ -2,8 +2,8 @@ name: Omni_eval
 
 on:
   pull_request:
-    branches:
-      -name master
+    # branches:
+    #   -name master
 
 jobs:
   benchmark-evaluation:
@@ -26,10 +26,11 @@ jobs:
 
       - name: Run main script and get markdown folder path
       id: run_main_script
-      echo "/mnt/hwfile/doc_parse/oylk/model_mds/Omnidocbench_A/Mineru2_ckp=$FOLDER_PATH" >> $GITHUB_OUTPUT
-      echo $GITHUB_OUTPUT
-      # - name: Run evaluation and assertion script
-      # env:
-      #   BENCHMARK_TOKEN: ${{ secrets.BENCHMARK_PLATFORM_USER_TOKEN }}
-      # run: |
-      #   python omni_ci.py ${{ steps.run_main_script.outputs.md_folders_path }}
+        run: |
+        echo "/mnt/hwfile/doc_parse/oylk/model_mds/Omnidocbench_A/Mineru2_ckp=$FOLDER_PATH" >> $GITHUB_OUTPUT
+        echo $GITHUB_OUTPUT
+        # - name: Run evaluation and assertion script
+        # env:
+        #   BENCHMARK_TOKEN: ${{ secrets.BENCHMARK_PLATFORM_USER_TOKEN }}
+        # run: |
+        #   python omni_ci.py ${{ steps.run_main_script.outputs.md_folders_path }}

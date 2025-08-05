@@ -8,14 +8,14 @@ on:
 jobs:
   benchmark-evaluation:
     name: Run Benchmark on Physical Machine
-    runs-on: [self-hosted, ubuntu-rzf]
+    runs-on: [ubuntu-rzf]
 
     steps:
       - name: Checkout PR code
         uses: actions/checkout@v4
       
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.11
       
@@ -23,6 +23,14 @@ jobs:
         run: |
           echo "PR code is at: $GITHUB_WORKSPACE"
           ls -l $GITHUB_WORKSPACE
-      
-      - name: Run Inference and Evaluation
-        run: echo "Workspace path is $GITHUB_WORKSPACE"
+
+      - name: Run main script and get markdown folder path
+      id: run_main_script
+        run: |
+        echo "/mnt/hwfile/doc_parse/oylk/model_mds/Omnidocbench_A/Mineru2_ckp=$FOLDER_PATH" >> $GITHUB_OUTPUT
+        echo $GITHUB_OUTPUT
+        # - name: Run evaluation and assertion script
+        # env:
+        #   BENCHMARK_TOKEN: ${{ secrets.BENCHMARK_PLATFORM_USER_TOKEN }}
+        # run: |
+        #   python omni_ci.py ${{ steps.run_main_script.outputs.md_folders_path }}
